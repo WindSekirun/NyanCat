@@ -1,4 +1,4 @@
-package pyxis.uzuki.live.nyancat
+package pyxis.uzuki.live.nyancat.config
 
 /**
  * NyanCat

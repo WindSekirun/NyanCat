@@ -9,7 +9,7 @@ import android.util.Log
  *
  * Description: 'Logger for Android.Log' class for NyanCat
  */
-internal class AndroidOnlyDebugLogPrinter(val debug: Boolean = false) : CatPrinter {
+internal class AndroidOnlyDebugLogPrinter(val debug: Boolean = false) : CatLoggerPrinter {
 
     override fun println(priority: Int, tag: String, message: String, t: Throwable?) {
         var newMessage = message

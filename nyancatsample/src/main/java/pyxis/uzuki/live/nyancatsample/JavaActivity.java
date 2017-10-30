@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import pyxis.uzuki.live.nyancat.NyanCat;
 import pyxis.uzuki.live.nyancat.NyanCatStatic;
-import pyxis.uzuki.live.nyancat.printer.CatPrinter;
+import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.pyxinjector.annotation.BindView;
 import pyxis.uzuki.live.pyxinjector.base.InjectActivity;
 
@@ -31,15 +31,20 @@ public class JavaActivity extends InjectActivity {
     private @BindView ScrollView scrollView;
     private @BindView ImageView imageNyanCat;
 
-    private CatPrinter textPrinter = new CatPrinter() {
+    private CatLoggerPrinter textPrinter = new CatLoggerPrinter() {
         @Override
         public void println(int priority, @NotNull String tag, @NotNull String message, @org.jetbrains.annotations.Nullable Throwable t) {
-            String newMeaage = message;
+            StringBuilder builder = new StringBuilder();
+            builder.append("tag = ")
+                    .append(tag)
+                    .append(" message = ")
+                    .append(message);
+
             if (t != null) {
-                newMeaage += '\n' + Log.getStackTraceString(t);
+                builder.append(Log.getStackTraceString(t));
             }
 
-            txtLogText.setText(txtLogText.getText() + "\n" + newMeaage);
+            txtLogText.setText(txtLogText.getText() + "\n" + builder.toString());
             scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
         }
     };
@@ -60,11 +65,5 @@ public class JavaActivity extends InjectActivity {
         } catch (Exception e) {
             NyanCat.e(e, "try-catch");
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        NyanCatStatic.logger.clearPrinter();
     }
 }

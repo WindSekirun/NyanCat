@@ -2,9 +2,9 @@ package pyxis.uzuki.live.nyancatsample;
 
 import android.app.Application;
 
-import pyxis.uzuki.live.nyancat.NyanCatConfig;
+import pyxis.uzuki.live.nyancat.config.NyanCatConfig;
 import pyxis.uzuki.live.nyancat.NyanCatStatic;
-import pyxis.uzuki.live.nyancat.TriggerTiming;
+import pyxis.uzuki.live.nyancat.config.TriggerTiming;
 
 /**
  * NyanCat

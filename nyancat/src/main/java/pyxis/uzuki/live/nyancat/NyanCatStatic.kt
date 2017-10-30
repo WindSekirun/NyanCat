@@ -1,8 +1,10 @@
 package pyxis.uzuki.live.nyancat
 
+import pyxis.uzuki.live.nyancat.config.NyanCatConfig
+import pyxis.uzuki.live.nyancat.config.TriggerTiming
 import pyxis.uzuki.live.nyancat.logger.DefaultLogger
 import pyxis.uzuki.live.nyancat.logger.OnlyDebugLogger
-import pyxis.uzuki.live.nyancat.printer.CatPrinter
+import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 
 /**
  * NyanCat
@@ -17,7 +19,7 @@ object NyanCatStatic {
 
     @JvmStatic
     @Synchronized
-    fun print(priority: Int, tag: String, message: String, t: Throwable?, printers: List<CatPrinter>?) {
+    fun print(priority: Int, tag: String, message: String, t: Throwable?, printers: List<CatLoggerPrinter>?) {
         if (printers != null && !printers.isEmpty()) {
             for (i in printers.indices) {
                 printers[i].println(priority, tag, message, t)
@@ -37,11 +39,13 @@ object NyanCatStatic {
 
     @JvmStatic
     fun tag(tag: String): NyanCatLogger {
-        return if (getDebuggable()) {
-            OnlyDebugLogger(getDebugState(), tag)
-        } else {
-            DefaultLogger(tag)
+        val newLogger = if (getDebuggable()) OnlyDebugLogger(getDebugState(), tag) else  DefaultLogger(tag)
+
+        for (printer in logger.printers) {
+            newLogger.addPrinter(printer)
         }
+
+        return newLogger
     }
 
     fun getPackageName(): String {

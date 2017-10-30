@@ -10,6 +10,6 @@ import org.jetbrains.annotations.Nullable
  *
  * Description: Basic Printer class for NyanCat
  */
-interface CatPrinter {
+interface CatLoggerPrinter {
     fun println(priority: Int, @NotNull tag: String, @NotNull message: String, @Nullable t: Throwable?)
 }

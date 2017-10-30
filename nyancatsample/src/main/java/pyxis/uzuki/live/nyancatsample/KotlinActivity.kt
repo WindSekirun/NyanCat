@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_sample.*
 import pyxis.uzuki.live.nyancat.NyanCat
 import pyxis.uzuki.live.nyancat.NyanCatStatic
-import pyxis.uzuki.live.nyancat.printer.CatPrinter
+import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 
 /**
  * NyanCat
@@ -19,13 +19,19 @@ import pyxis.uzuki.live.nyancat.printer.CatPrinter
  */
 class KotlinActivity : AppCompatActivity() {
 
-    private val catPrinter = object : CatPrinter {
+    private val catPrinter = object : CatLoggerPrinter {
         override fun println(priority: Int, tag: String, message: String, t: Throwable?) {
-            var newMessage = message
-            if (t != null)
-                newMessage += '\n' + Log.getStackTraceString(t)
+            val builder = StringBuilder()
+            builder.append("tag = ")
+                    .append(tag)
+                    .append(" message = ")
+                    .append(message)
 
-            txtLogText.text = "${txtLogText.text}\n$newMessage"
+            if (t != null) {
+                builder.append(Log.getStackTraceString(t))
+            }
+
+            txtLogText.text = txtLogText.text.toString() + "\n" + builder.toString()
             scrollView.post { scrollView.fullScroll(View.FOCUS_DOWN) }
         }
 

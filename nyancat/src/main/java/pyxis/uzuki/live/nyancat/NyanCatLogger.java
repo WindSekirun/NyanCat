@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import pyxis.uzuki.live.nyancat.printer.CatPrinter;
+import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
 
 /**
@@ -17,11 +17,11 @@ import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
 
 public abstract class NyanCatLogger {
 
-    protected abstract ArrayList<CatPrinter> getPrinters();
+    protected abstract ArrayList<CatLoggerPrinter> getPrinters();
 
     protected abstract String getTag();
 
-    public abstract void addPrinter(CatPrinter printer);
+    public abstract void addPrinter(CatLoggerPrinter printer);
 
     public abstract void clearPrinter();
 
