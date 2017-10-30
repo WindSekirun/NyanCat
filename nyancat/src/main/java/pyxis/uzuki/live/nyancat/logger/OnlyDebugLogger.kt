@@ -13,19 +13,25 @@ import java.util.*
  * Created by Pyxis on 2017-10-30.
  */
 
-class OnlyDebugLogger(debug: Boolean = false) : NyanCatLogger() {
+internal class OnlyDebugLogger(val debug: Boolean = false) : NyanCatLogger() {
 
-    private val list = arrayListOf<CatPrinter>()
+    private val addList = arrayListOf<CatPrinter>()
 
-    init {
+    override fun getPrinters(): ArrayList<CatPrinter> {
+        val list = arrayListOf<CatPrinter>()
         list.add(AndroidOnlyDebugLogPrinter(debug))
+        list.addAll(addList)
+        return list
     }
 
     override fun getTag(): String = getClassName().simpleClassName()
 
-    override fun getPrinters(): ArrayList<CatPrinter> = list
-
     override fun addPrinter(printer: CatPrinter) {
-        list.add(printer)
+        addList.add(printer)
+    }
+
+    override fun clearPrinter() {
+        addList.clear()
+        addList.trimToSize()
     }
 }

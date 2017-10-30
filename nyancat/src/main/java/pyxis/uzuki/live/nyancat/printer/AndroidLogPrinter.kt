@@ -9,7 +9,7 @@ import android.util.Log
  *
  * Description: 'Logger for Android.Log' class for NyanCat
  */
-class AndroidLogPrinter : CatPrinter {
+internal class AndroidLogPrinter : CatPrinter {
 
     override fun println(priority: Int, tag: String, message: String, t: Throwable?) {
         var newMessage = message

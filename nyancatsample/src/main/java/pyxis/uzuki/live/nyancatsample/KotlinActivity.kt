@@ -18,16 +18,26 @@ import pyxis.uzuki.live.nyancat.printer.CatPrinter
  * Description:
  */
 class KotlinActivity : AppCompatActivity() {
+
+    private val catPrinter = object : CatPrinter {
+        override fun println(priority: Int, tag: String, message: String, t: Throwable?) {
+            var newMessage = message
+            if (t != null)
+                newMessage += '\n' + Log.getStackTraceString(t)
+
+            txtLogText.text = "${txtLogText.text}\n$newMessage"
+            scrollView.post { scrollView.fullScroll(View.FOCUS_DOWN) }
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample)
 
         Glide.with(this).asGif().load(R.drawable.original).into(imageNyanCat)
 
-        NyanCatStatic.logger.addPrinter(TextPrinter {
-            txtLogText.text = "${txtLogText.text}\n$it"
-            scrollView.post { scrollView.fullScroll(View.FOCUS_DOWN) }
-        })
+        NyanCatStatic.logger.addPrinter(catPrinter)
 
         imageNyanCat.setOnClickListener {
             NyanCat.e("Nyan!")
@@ -39,15 +49,5 @@ class KotlinActivity : AppCompatActivity() {
             NyanCat.e(e, "try-catch")
         }
 
-    }
-
-    private class TextPrinter(val listener: (String) -> Unit) : CatPrinter {
-        override fun println(priority: Int, tag: String, message: String, t: Throwable?) {
-            var newMessage = message
-            if (t != null)
-                newMessage += '\n' + Log.getStackTraceString(t)
-
-            listener.invoke(newMessage)
-        }
     }
 }

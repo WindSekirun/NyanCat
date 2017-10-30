@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
+import pyxis.uzuki.live.nyancat.NyanCat
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,12 +16,14 @@ class MainActivity : AppCompatActivity() {
         // image resource come from http://www.nyan.cat
         Glide.with(this).asGif().load(R.drawable.original).into(imageNyanCat)
 
+        imageNyanCat.setOnClickListener { NyanCat.e("Nyan!") }
+
         btnKotlin.setOnClickListener {
             startActivity(Intent(this, KotlinActivity::class.java))
         }
 
         btnJava.setOnClickListener {
-
+            startActivity(Intent(this, JavaActivity::class.java))
         }
     }
 }

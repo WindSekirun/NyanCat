@@ -14,18 +14,25 @@ import java.util.*
  *
  */
 
-class DefaultLogger : NyanCatLogger() {
-    private val list = arrayListOf<CatPrinter>()
+internal class DefaultLogger : NyanCatLogger() {
 
-    init {
+    private val addList = arrayListOf<CatPrinter>()
+
+    override fun getPrinters(): ArrayList<CatPrinter> {
+        val list = arrayListOf<CatPrinter>()
         list.add(AndroidLogPrinter())
+        list.addAll(addList)
+        return list
     }
-
-    override fun getPrinters(): ArrayList<CatPrinter> = list
 
     override fun getTag(): String = getClassName().simpleClassName()
 
     override fun addPrinter(printer: CatPrinter) {
-        list.add(printer)
+        addList.add(printer)
+    }
+
+    override fun clearPrinter() {
+        addList.clear()
+        addList.trimToSize()
     }
 }

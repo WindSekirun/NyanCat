@@ -23,6 +23,8 @@ public abstract class NyanCatLogger {
 
     public abstract void addPrinter(CatPrinter printer);
 
+    public abstract void clearPrinter();
+
     public void d(String message) {
         println(Log.DEBUG, message, null);
     }
