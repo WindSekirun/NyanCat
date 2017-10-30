@@ -34,6 +34,7 @@ allprojects {
 dependencies {
     implementation 'com.github.WindSekirun:NyanCat:0.3.0'
 }
+```
 
 #### Initialize in your application
 ```Java
