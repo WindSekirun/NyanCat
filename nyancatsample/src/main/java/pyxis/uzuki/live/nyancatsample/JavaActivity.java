@@ -1,5 +1,6 @@
 package pyxis.uzuki.live.nyancatsample;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,9 +13,12 @@ import com.bumptech.glide.Glide;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+
 import pyxis.uzuki.live.nyancat.NyanCat;
 import pyxis.uzuki.live.nyancat.NyanCatStatic;
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
+import pyxis.uzuki.live.nyancat.printer.LogFilePrinter;
 import pyxis.uzuki.live.pyxinjector.annotation.BindView;
 import pyxis.uzuki.live.pyxinjector.base.InjectActivity;
 
@@ -56,14 +60,13 @@ public class JavaActivity extends InjectActivity {
 
         Glide.with(this).asGif().load(R.drawable.original).into(imageNyanCat);
 
+        CustomLogFilePrinter logFilePrinter = new CustomLogFilePrinter(this, "Log.txt");
+
         NyanCatStatic.logger.addPrinter(textPrinter);
+        NyanCatStatic.logger.addPrinter(logFilePrinter);
+
+        txtLogText.setText("===========");
 
         imageNyanCat.setOnClickListener(view -> NyanCat.e("Nyan!"));
-
-        try {
-            throw new NullPointerException("easd");
-        } catch (Exception e) {
-            NyanCat.e(e, "try-catch");
-        }
     }
 }

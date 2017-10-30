@@ -86,4 +86,4 @@ public final class NyanCat {
     public static NyanCatLogger tag(String tag) {
         return NyanCatStatic.tag(tag);
     }
-}
+ }

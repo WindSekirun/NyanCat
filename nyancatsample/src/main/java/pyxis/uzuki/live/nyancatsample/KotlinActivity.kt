@@ -46,14 +46,15 @@ class KotlinActivity : AppCompatActivity() {
         NyanCatStatic.logger.addPrinter(catPrinter)
 
         imageNyanCat.setOnClickListener {
-            NyanCat.tag("NyanCatSample").e("message is %s", "nya!");
+            NyanCat.tag("NyanCatSample").e("message is %s", "nya!")
         }
+
+        txtLogText.text = "==========="
 
         try {
             throw NullPointerException("easd")
         } catch (e: Exception) {
             NyanCat.e(e, "try-catch")
         }
-
     }
 }

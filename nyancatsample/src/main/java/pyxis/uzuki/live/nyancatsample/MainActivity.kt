@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         imageNyanCat.setOnClickListener { NyanCat.e("Nyan!") }
 
+        NyanCat.e("Message %s, %s, %s", "a", "b", "c")
+
         btnKotlin.setOnClickListener {
             startActivity(Intent(this, KotlinActivity::class.java))
         }

@@ -28,18 +28,25 @@ object NyanCatStatic {
     }
 
     @JvmStatic
-    fun breedNyanCat(config: NyanCatConfig) {
+    @JvmOverloads
+    fun breedNyanCat(config: NyanCatConfig, printers: List<CatLoggerPrinter>? = null) {
         this.config = config
         logger = if (getDebuggable()) {
             OnlyDebugLogger(config.debug)
         } else {
             DefaultLogger()
         }
+
+        if (printers != null && printers.isNotEmpty()) {
+            for (printer in printers) {
+                logger.addPrinter(printer)
+            }
+        }
     }
 
     @JvmStatic
     fun tag(tag: String): NyanCatLogger {
-        val newLogger = if (getDebuggable()) OnlyDebugLogger(getDebugState(), tag) else  DefaultLogger(tag)
+        val newLogger = if (getDebuggable()) OnlyDebugLogger(getDebugState(), tag) else DefaultLogger(tag)
 
         for (printer in logger.printers) {
             newLogger.addPrinter(printer)
