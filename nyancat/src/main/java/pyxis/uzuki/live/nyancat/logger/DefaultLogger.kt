@@ -14,7 +14,7 @@ import java.util.*
  *
  */
 
-internal class DefaultLogger : NyanCatLogger() {
+internal class DefaultLogger(private val tag: String = getClassName().simpleClassName()) : NyanCatLogger() {
 
     private val addList = arrayListOf<CatPrinter>()
 
@@ -25,7 +25,7 @@ internal class DefaultLogger : NyanCatLogger() {
         return list
     }
 
-    override fun getTag(): String = getClassName().simpleClassName()
+    override fun getTag(): String = tag
 
     override fun addPrinter(printer: CatPrinter) {
         addList.add(printer)

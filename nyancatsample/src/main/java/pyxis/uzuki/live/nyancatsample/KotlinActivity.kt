@@ -40,7 +40,7 @@ class KotlinActivity : AppCompatActivity() {
         NyanCatStatic.logger.addPrinter(catPrinter)
 
         imageNyanCat.setOnClickListener {
-            NyanCat.e("Nyan!")
+            NyanCat.tag("NyanCatSample").e("message is %s", "nya!");
         }
 
         try {

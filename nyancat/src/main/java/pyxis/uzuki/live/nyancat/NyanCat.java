@@ -82,4 +82,8 @@ public final class NyanCat {
     public static void v(Throwable t, String message, Object... args) {
         NyanCatStatic.logger.v(t, message, args);
     }
+
+    public static NyanCatLogger tag(String tag) {
+        return NyanCatStatic.tag(tag);
+    }
 }

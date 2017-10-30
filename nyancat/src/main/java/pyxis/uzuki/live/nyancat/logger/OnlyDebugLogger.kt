@@ -13,7 +13,7 @@ import java.util.*
  * Created by Pyxis on 2017-10-30.
  */
 
-internal class OnlyDebugLogger(val debug: Boolean = false) : NyanCatLogger() {
+internal class OnlyDebugLogger(val debug: Boolean = false, private val tag: String = getClassName().simpleClassName()) : NyanCatLogger() {
 
     private val addList = arrayListOf<CatPrinter>()
 
@@ -24,7 +24,7 @@ internal class OnlyDebugLogger(val debug: Boolean = false) : NyanCatLogger() {
         return list
     }
 
-    override fun getTag(): String = getClassName().simpleClassName()
+    override fun getTag(): String = tag
 
     override fun addPrinter(printer: CatPrinter) {
         addList.add(printer)

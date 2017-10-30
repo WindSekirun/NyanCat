@@ -28,10 +28,19 @@ object NyanCatStatic {
     @JvmStatic
     fun breedNyanCat(config: NyanCatConfig) {
         this.config = config
-        logger = if (config.debuggable == TriggerTiming.ONLY_DEBUG) {
+        logger = if (getDebuggable()) {
             OnlyDebugLogger(config.debug)
         } else {
             DefaultLogger()
+        }
+    }
+
+    @JvmStatic
+    fun tag(tag: String): NyanCatLogger {
+        return if (getDebuggable()) {
+            OnlyDebugLogger(getDebugState(), tag)
+        } else {
+            DefaultLogger(tag)
         }
     }
 
@@ -41,5 +50,21 @@ object NyanCatStatic {
         }
 
         return config?.packageName as String
+    }
+
+    fun getDebuggable(): Boolean {
+        if (config == null) {
+            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatStatic.breedNyanCat(NyanCatConfig)")
+        }
+
+        return config?.debuggable == TriggerTiming.ONLY_DEBUG
+    }
+
+    fun getDebugState(): Boolean {
+        if (config == null) {
+            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatStatic.breedNyanCat(NyanCatConfig)")
+        }
+
+        return config?.debug ?: false
     }
 }
