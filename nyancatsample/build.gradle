@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        applicationId "pyxis.uzuki.live.nyancatsample"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    // appcompat
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    // richutils
+    implementation 'com.github.WindSekirun:RichUtilsKt:1.8.0'
+    // pyxinjector
+    implementation 'com.github.WindSekirun:PyxInjector:1.1.5'
+    // nyancat module
+    implementation project(':nyancat')
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    kapt 'com.github.bumptech.glide:compiler:4.2.0'
+}
