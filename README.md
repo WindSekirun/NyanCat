@@ -1,6 +1,8 @@
-## NyanCat
+## NyanCat [![CircleCI](https://circleci.com/gh/WindSekirun/NyanCat.svg?style=svg)](https://circleci.com/gh/WindSekirun/NyanCat) [![](https://jitpack.io/v/WindSekirun/NyanCat.svg)](https://jitpack.io/#WindSekirun/NyanCat)
 
 ![](https://github.com/WindSekirun/NyanCat/blob/master/small.png?raw=true)
+
+[![Kotlin](https://img.shields.io/badge/kotlin-1.2.0-blue.svg)](http://kotlinlang.org)	[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 > Nyanyanyanyanyanyanya!
 >
@@ -14,7 +16,7 @@ Cat, logically, it means concatenate but it also means World's most adorable ani
 
 In other way to present 'Logcat', **a 'cat' which show us some message**.
 
-NyanCat is *Advanced Custom Logger Library* for Android, Written in Kotlin and Java
+NyanCat is *Advanced Custom Logger Library* for Android, Written in [Kotlin](http://kotlinlang.org) and Java
 
 ## Usages
 
