@@ -35,12 +35,11 @@ dependencies {
 ```
 
 ### Initialize in your application
-```Java
-NyanCatConfig config = new NyanCatConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
-NyanCatStatic.breedNyanCat(config);
-```
 
-put this code in your Application's onCreate() methods.
+```Java
+LoggerConfig config = new LoggerConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
+NyanCatGlobal.breed(config);
+```
 
 ### Logging
 Please see [NyanCat Wiki]() 

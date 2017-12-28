@@ -1,7 +1,7 @@
 package pyxis.uzuki.live.nyancat.logger
 
 import pyxis.uzuki.live.nyancat.NyanCatLogger
-import pyxis.uzuki.live.nyancat.printer.AndroidOnlyDebugLogPrinter
+import pyxis.uzuki.live.nyancat.printer.AndroidDebugLogPrinter
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 import pyxis.uzuki.live.nyancat.utils.getClassName
 import pyxis.uzuki.live.nyancat.utils.simpleClassName
@@ -14,13 +14,13 @@ import java.util.*
  * Created by Pyxis on 2017-10-30.
  */
 
-internal class OnlyDebugLogger(val debug: Boolean = false, private val tag: String = "") : NyanCatLogger() {
+internal class DebugLogger(val debug: Boolean = false, private val tag: String = "") : NyanCatLogger() {
 
     private val addList = arrayListOf<CatLoggerPrinter>()
 
     override fun getPrinters(): ArrayList<CatLoggerPrinter> {
         val list = arrayListOf<CatLoggerPrinter>()
-        list.add(AndroidOnlyDebugLogPrinter(debug))
+        list.add(AndroidDebugLogPrinter(debug))
         list.addAll(addList)
         return list
     }

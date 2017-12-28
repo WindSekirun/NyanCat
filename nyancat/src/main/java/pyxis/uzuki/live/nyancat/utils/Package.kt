@@ -1,6 +1,6 @@
 package pyxis.uzuki.live.nyancat.utils
 
-import pyxis.uzuki.live.nyancat.NyanCatStatic
+import pyxis.uzuki.live.nyancat.NyanCatGlobal
 
 
 /**
@@ -27,7 +27,7 @@ fun String.simpleClassName(): String {
 
 fun getClassName(): String {
     val stackTrace = Thread.currentThread().stackTrace
-    val packageName = NyanCatStatic.getPackageName()
+    val packageName = NyanCatGlobal.getPackageName()
     stackTrace.forEach {
         val className = it.className
         if (className.contains(packageName, false)) {

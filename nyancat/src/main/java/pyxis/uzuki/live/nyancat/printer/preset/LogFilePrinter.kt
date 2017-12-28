@@ -1,7 +1,7 @@
 package pyxis.uzuki.live.nyancat.printer.preset
 
 import android.content.Context
-import pyxis.uzuki.live.nyancat.NyanCatStatic
+import pyxis.uzuki.live.nyancat.NyanCatGlobal
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 import pyxis.uzuki.live.richutilskt.utils.asDateString
 import pyxis.uzuki.live.richutilskt.utils.saveFile
@@ -44,7 +44,7 @@ open class LogFilePrinter(val context: Context, val fileName: String) : CatLogge
 
     open fun getFormatMessage(priority: Int, tag: String, message: String, t: Throwable?)
             = "${System.currentTimeMillis().asDateString("yyyy-MM-dd HH:mm:ss")} " +
-            "/${NyanCatStatic.getPackageName()} ${priority.getPriorityString()}/$tag: $message"
+            "/${NyanCatGlobal.getPackageName()} ${priority.getPriorityString()}/$tag: $message"
 
 
     open fun getLogFile() = File(context.externalCacheDir, fileName)

@@ -7,7 +7,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_sample.*
 import pyxis.uzuki.live.nyancat.NyanCat
-import pyxis.uzuki.live.nyancat.NyanCatStatic
+import pyxis.uzuki.live.nyancat.NyanCatGlobal
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 
 /**
@@ -43,7 +43,7 @@ class KotlinActivity : AppCompatActivity() {
 
         Glide.with(this).asGif().load(R.drawable.original).into(imageNyanCat)
 
-        NyanCatStatic.logger.addPrinter(catPrinter)
+        NyanCatGlobal.addPrinter(catPrinter)
 
         imageNyanCat.setOnClickListener {
             NyanCat.tag("NyanCatSample").e("message is %s", "nya!")

@@ -165,7 +165,7 @@ public abstract class NyanCatLogger {
 
     protected void println(int priority, String message, Throwable t) {
         String newMessage = EmptyStateKt.isEmptyDefault(message, "empty");
-        NyanCatStatic.print(priority, getTag(), newMessage, t, getPrinters());
+        NyanCatGlobal.print(priority, getTag(), newMessage, t, getPrinters());
     }
 
     private static String format(String message, Object[] args) {

@@ -3,17 +3,17 @@ package pyxis.uzuki.live.nyancat
 import pyxis.uzuki.live.nyancat.config.LoggerConfig
 import pyxis.uzuki.live.nyancat.config.TriggerTiming
 import pyxis.uzuki.live.nyancat.logger.DefaultLogger
-import pyxis.uzuki.live.nyancat.logger.OnlyDebugLogger
+import pyxis.uzuki.live.nyancat.logger.DebugLogger
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 
 /**
  * NyanCat
- * Class: NyanCatStatic
+ * Class: NyanCatGlobal
  * Created by Pyxis on 2017-10-30.
  *
  * Description:
  */
-object NyanCatStatic {
+object NyanCatGlobal {
     lateinit var logger: NyanCatLogger
     private var config: LoggerConfig? = null
 
@@ -28,11 +28,14 @@ object NyanCatStatic {
     }
 
     @JvmStatic
+    fun addPrinter(printer: CatLoggerPrinter) = logger.addPrinter(printer)
+
+    @JvmStatic
     @JvmOverloads
     fun breed(config: LoggerConfig, printers: List<CatLoggerPrinter>? = null) {
         this.config = config
         logger = if (getDebuggable()) {
-            OnlyDebugLogger(config.debug)
+            DebugLogger(config.debug)
         } else {
             DefaultLogger()
         }
@@ -46,7 +49,7 @@ object NyanCatStatic {
 
     @JvmStatic
     fun tag(tag: String): NyanCatLogger {
-        val newLogger = if (getDebuggable()) OnlyDebugLogger(getDebugState(), tag) else DefaultLogger(tag)
+        val newLogger = if (getDebuggable()) DebugLogger(getDebugState(), tag) else DefaultLogger(tag)
 
         for (printer in logger.addedPrinters) {
             newLogger.addPrinter(printer)
@@ -57,7 +60,7 @@ object NyanCatStatic {
 
     fun getPackageName(): String {
         if (config == null) {
-            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatStatic.breedNyanCat(NyanCatConfig)")
+            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatGlobal.breedNyanCat(NyanCatConfig)")
         }
 
         return config?.packageName as String
@@ -65,7 +68,7 @@ object NyanCatStatic {
 
     fun getDebuggable(): Boolean {
         if (config == null) {
-            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatStatic.breedNyanCat(NyanCatConfig)")
+            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatGlobal.breedNyanCat(NyanCatConfig)")
         }
 
         return config?.debuggable == TriggerTiming.ONLY_DEBUG
@@ -73,7 +76,7 @@ object NyanCatStatic {
 
     fun getDebugState(): Boolean {
         if (config == null) {
-            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatStatic.breedNyanCat(NyanCatConfig)")
+            throw NullPointerException("NyanCatConfig is not initialized. Please add NyanCatGlobal.breedNyanCat(NyanCatConfig)")
         }
 
         return config?.debug ?: false

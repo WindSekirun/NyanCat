@@ -5,7 +5,7 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-import pyxis.uzuki.live.nyancat.NyanCatStatic;
+import pyxis.uzuki.live.nyancat.NyanCatGlobal;
 import pyxis.uzuki.live.nyancat.config.LoggerConfig;
 import pyxis.uzuki.live.nyancat.config.TriggerTiming;
 import pyxis.uzuki.live.nyancat.printer.preset.LogFilePrinter;
@@ -27,6 +27,6 @@ public class NyanCatApplication extends Application {
         printerList.add(new CustomLogFilePrinter(this, "log.txt"));
 
         LoggerConfig config = new LoggerConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
-        NyanCatStatic.breed(config, printerList);
+        NyanCatGlobal.breed(config, printerList);
     }
 }

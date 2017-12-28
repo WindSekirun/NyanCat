@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import org.jetbrains.annotations.NotNull;
 
 import pyxis.uzuki.live.nyancat.NyanCat;
-import pyxis.uzuki.live.nyancat.NyanCatStatic;
+import pyxis.uzuki.live.nyancat.NyanCatGlobal;
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.pyxinjector.annotation.BindView;
 import pyxis.uzuki.live.pyxinjector.base.InjectActivity;
@@ -58,8 +58,8 @@ public class JavaActivity extends InjectActivity {
 
         CustomLogFilePrinter logFilePrinter = new CustomLogFilePrinter(this, "Log.txt");
 
-        NyanCatStatic.logger.addPrinter(textPrinter);
-        NyanCatStatic.logger.addPrinter(logFilePrinter);
+        NyanCatGlobal.addPrinter(textPrinter);
+        NyanCatGlobal.addPrinter(logFilePrinter);
 
         txtLogText.setText("===========");
 
