@@ -1,14 +1,5 @@
 package pyxis.uzuki.live.nyancat
 
-/**
- * NyanCat
- * Class: NyanCat
- * Created by Pyxis on 2017-10-30.
- *
- *
- * Description:
- */
-
 object NyanCat {
 
     @JvmStatic fun d(message: String) {
