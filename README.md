@@ -3,24 +3,20 @@
 ![](https://github.com/WindSekirun/NyanCat/blob/master/small.png?raw=true)
 
 > Nyanyanyanyanyanyanya!
-> 
+>
 > Nyan Cat, also known as Pop Tart Cat, is an 8-bit animation depicting a cat with the body of a cherry pop tart flying through outer space
 >
 > KnowYourMeme, http://knowyourmeme.com/memes/nyan-cat-pop-tart-cat
 
-Logcat is command-line tool that dumps a log of system messages, messages that you have writtern from your app with the Log class.
+Logcat is command-line tool that dumps a log of system messages, messages that you have written from your app with the Log class.
 
 Cat, logically, it means concatenate but it also means World's most adorable animal.
 
 In other way to present 'Logcat', **a 'cat' which show us some message**.
 
-NyanCat is *Advanced Custom Logger Library* for Android, Written in **Kotlin**(57%) and **Java**(42%).
+NyanCat is *Advanced Custom Logger Library* for Android, Written in Kotlin and Java
 
 ## Usages
-
-### get NyanCat!
-
-**THIS LIBRARY IS NOT READY TO PRODUCTION**.
 
 *rootProject/build.gradle*
 ```	
@@ -34,11 +30,11 @@ allprojects {
 *app/build.gradle*
 ```
 dependencies {
-    implementation 'com.github.WindSekirun:NyanCat:0.3.0'
+    implementation 'com.github.WindSekirun:NyanCat:1.0.0'
 }
 ```
 
-#### Initialize in your application
+### Initialize in your application
 ```Java
 NyanCatConfig config = new NyanCatConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
 NyanCatStatic.breedNyanCat(config);
@@ -47,75 +43,7 @@ NyanCatStatic.breedNyanCat(config);
 put this code in your Application's onCreate() methods.
 
 ### Logging
-
-#### 
-
-All 5 methods indicate priority of Log.
-
-### Tags
-
-Automatically finds the name of the class that is running by default.
-
-if you have to declare your own tag, put ```.tag("TAG")``` in Log methods.
-
-```Java
-NyanCat.tag("NyanCat").d("message")
-```
-
-### Printer
-
-'Printer' object is a function that runs simultaneously with publish log, allowing you to perform additional tasks.
-
-Each printer implement ```println(priority: Int, tag: String, message: String, t: Throwable?)``` methods and when each logging methods invoke, println methods will invoke simultaneously.
-
-#### Printer Example
-
-1. Declare your own Printer
-
-When you make Custom Printer, Printer need to implement ```CatLoggerPrinter```.
-Each field is NotNull exclude Throwable object. So you need check null-state of Throwable object.
-
-```Java
-private CatLoggerPrinter textPrinter = new CatLoggerPrinter() {
-        @Override
-        public void println(int priority, String tag, String message, Throwable t) {
-            StringBuilder builder = new StringBuilder();
-            builder.append("tag = ").append(tag).append(" message = ").append(message);
-
-            if (t != null) {
-                builder.append(Log.getStackTraceString(t));
-            }
-
-            txtLogText.setText(txtLogText.getText() + "\n" + builder.toString());
-            scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
-        }
-    };
-```
-
-2. Add Printer into NyanCat
-
-You can attach Printer in two way.
-
-**Attach in your application**
-```Java
-List<CatLoggerPrinter> printerList = new ArrayList<>();
-printerList.add(new CustomLogFilePrinter(this, "log.txt"));
-
-NyanCatConfig config = new NyanCatConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
-NyanCatStatic.breedNyanCat(config, printerList);
-````
-
-**Attach in your class**
-```Java
-NyanCatStatic.logger.addPrinter(textPrinter);
-```
-
-#### Special Printer class
-
-**LogFilePrinter**
-Printer which save log in ExternalStorage.
-
-You can override LogFilePrinter and customize format of text and saved locations.
+Please see [NyanCat Wiki]() 
 
 ## License 
 ```

@@ -8,7 +8,7 @@ package pyxis.uzuki.live.nyancat.config
  * Description:
  */
 
-data class NyanCatConfig(val packageName: String, val debug: Boolean = false, val debuggable: TriggerTiming = TriggerTiming.ALL)
+data class LoggerConfig(val packageName: String, val debug: Boolean = false, val debuggable: TriggerTiming = TriggerTiming.ALL)
 
 enum class TriggerTiming {
     ONLY_DEBUG, ALL

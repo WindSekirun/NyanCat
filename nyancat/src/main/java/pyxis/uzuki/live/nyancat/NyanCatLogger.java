@@ -7,8 +7,6 @@ import java.util.List;
 
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
-import pyxis.uzuki.live.nyancat.utils.ListCollectionKt;
-
 import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toListString;
 
 /**

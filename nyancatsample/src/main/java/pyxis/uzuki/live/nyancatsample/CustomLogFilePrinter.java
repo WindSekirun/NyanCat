@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
-import pyxis.uzuki.live.nyancat.printer.LogFilePrinter;
+import pyxis.uzuki.live.nyancat.printer.preset.LogFilePrinter;
 
 public class CustomLogFilePrinter extends LogFilePrinter {
 

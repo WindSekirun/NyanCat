@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pyxis.uzuki.live.nyancat.NyanCatStatic;
-import pyxis.uzuki.live.nyancat.config.NyanCatConfig;
+import pyxis.uzuki.live.nyancat.config.LoggerConfig;
 import pyxis.uzuki.live.nyancat.config.TriggerTiming;
-import pyxis.uzuki.live.nyancat.printer.LogFilePrinter;
+import pyxis.uzuki.live.nyancat.printer.preset.LogFilePrinter;
 
 /**
  * NyanCat
@@ -26,7 +26,7 @@ public class NyanCatApplication extends Application {
         List<LogFilePrinter> printerList = new ArrayList<>();
         printerList.add(new CustomLogFilePrinter(this, "log.txt"));
 
-        NyanCatConfig config = new NyanCatConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
-        NyanCatStatic.breedNyanCat(config, printerList);
+        LoggerConfig config = new LoggerConfig(getPackageName(), BuildConfig.DEBUG, TriggerTiming.ALL);
+        NyanCatStatic.breed(config, printerList);
     }
 }

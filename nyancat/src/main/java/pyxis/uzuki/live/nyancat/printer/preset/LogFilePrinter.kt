@@ -1,7 +1,8 @@
-package pyxis.uzuki.live.nyancat.printer
+package pyxis.uzuki.live.nyancat.printer.preset
 
 import android.content.Context
 import pyxis.uzuki.live.nyancat.NyanCatStatic
+import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
 import pyxis.uzuki.live.richutilskt.utils.asDateString
 import pyxis.uzuki.live.richutilskt.utils.saveFile
 import java.io.File

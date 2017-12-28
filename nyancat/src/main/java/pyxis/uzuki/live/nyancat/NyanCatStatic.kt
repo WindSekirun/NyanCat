@@ -1,6 +1,6 @@
 package pyxis.uzuki.live.nyancat
 
-import pyxis.uzuki.live.nyancat.config.NyanCatConfig
+import pyxis.uzuki.live.nyancat.config.LoggerConfig
 import pyxis.uzuki.live.nyancat.config.TriggerTiming
 import pyxis.uzuki.live.nyancat.logger.DefaultLogger
 import pyxis.uzuki.live.nyancat.logger.OnlyDebugLogger
@@ -15,7 +15,7 @@ import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter
  */
 object NyanCatStatic {
     lateinit var logger: NyanCatLogger
-    private var config: NyanCatConfig? = null
+    private var config: LoggerConfig? = null
 
     @JvmStatic
     @Synchronized
@@ -29,7 +29,7 @@ object NyanCatStatic {
 
     @JvmStatic
     @JvmOverloads
-    fun breedNyanCat(config: NyanCatConfig, printers: List<CatLoggerPrinter>? = null) {
+    fun breed(config: LoggerConfig, printers: List<CatLoggerPrinter>? = null) {
         this.config = config
         logger = if (getDebuggable()) {
             OnlyDebugLogger(config.debug)
