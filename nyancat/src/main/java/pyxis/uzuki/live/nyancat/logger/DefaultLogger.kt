@@ -16,7 +16,6 @@ import java.util.*
  */
 
 internal class DefaultLogger(private val tag: String = "") : NyanCatLogger() {
-
     private val addList = arrayListOf<CatLoggerPrinter>()
 
     override fun getPrinters(): ArrayList<CatLoggerPrinter> {
@@ -40,5 +39,9 @@ internal class DefaultLogger(private val tag: String = "") : NyanCatLogger() {
     override fun clearPrinter() {
         addList.clear()
         addList.trimToSize()
+    }
+
+    override fun getAddedPrinters(): ArrayList<CatLoggerPrinter> {
+        return addList
     }
 }

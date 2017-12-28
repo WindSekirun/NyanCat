@@ -51,10 +51,8 @@ class KotlinActivity : AppCompatActivity() {
 
         txtLogText.text = "==========="
 
-        try {
-            throw NullPointerException("easd")
-        } catch (e: Exception) {
-            NyanCat.e(e, "try-catch")
-        }
+        val arrays = arrayListOf("A", "B", "C")
+        NyanCat.d(arrays)
+        NyanCat.d(1)
     }
 }

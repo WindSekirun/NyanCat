@@ -3,9 +3,13 @@ package pyxis.uzuki.live.nyancat;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
+import pyxis.uzuki.live.nyancat.utils.ListCollectionKt;
+
+import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toListString;
 
 /**
  * NyanCat
@@ -18,6 +22,8 @@ import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
 public abstract class NyanCatLogger {
 
     protected abstract ArrayList<CatLoggerPrinter> getPrinters();
+
+    protected abstract ArrayList<CatLoggerPrinter> getAddedPrinters();
 
     protected abstract String getTag();
 
@@ -37,6 +43,18 @@ public abstract class NyanCatLogger {
         println(Log.DEBUG, format(message, args), t);
     }
 
+    public <T> void d(List<T> lists) {
+        println(Log.DEBUG, toListString(lists), null);
+    }
+
+    public <T> void d(CharSequence delimiter, List<T> lists) {
+        println(Log.DEBUG, toListString(lists, delimiter), null);
+    }
+
+    public void d(Object object) {
+        println(Log.DEBUG, object.toString(), null);
+    }
+
     public void i(String message) {
         println(Log.INFO, message, null);
     }
@@ -47,6 +65,18 @@ public abstract class NyanCatLogger {
 
     public void i(Throwable t, String message, Object... args) {
         println(Log.INFO, format(message, args), t);
+    }
+
+    public <T> void i(List<T> lists) {
+        println(Log.INFO, toListString(lists), null);
+    }
+
+    public <T> void i(CharSequence delimiter, List<T> lists) {
+        println(Log.INFO, toListString(lists, delimiter), null);
+    }
+
+    public void i(Object object) {
+        println(Log.INFO, object.toString(), null);
     }
 
     public void w(String message) {
@@ -68,6 +98,18 @@ public abstract class NyanCatLogger {
         println(Log.WARN, t.getMessage(), t);
     }
 
+    public <T> void w(List<T> lists) {
+        println(Log.WARN, toListString(lists), null);
+    }
+
+    public <T> void w(CharSequence delimiter, List<T> lists) {
+        println(Log.WARN, toListString(lists, delimiter), null);
+    }
+
+    public void w(Object object) {
+        println(Log.WARN, object.toString(), null);
+    }
+
     public void e(Throwable t) {
         if (t == null) {
             t = EmptyStateKt.getDefaultException();
@@ -87,6 +129,18 @@ public abstract class NyanCatLogger {
         println(Log.ERROR, format(message, args), t);
     }
 
+    public <T> void e(List<T> lists) {
+        println(Log.ERROR, toListString(lists), null);
+    }
+
+    public <T> void e(CharSequence delimiter, List<T> lists) {
+        println(Log.ERROR, toListString(lists, delimiter), null);
+    }
+
+    public void e(Object object) {
+        println(Log.ERROR, object.toString(), null);
+    }
+
     public void v(String message) {
         println(Log.VERBOSE, message, null);
     }
@@ -97,6 +151,18 @@ public abstract class NyanCatLogger {
 
     public void v(Throwable t, String message, Object... args) {
         println(Log.VERBOSE, format(message, args), t);
+    }
+
+    public <T> void v(List<T> lists) {
+        println(Log.VERBOSE, toListString(lists), null);
+    }
+
+    public <T> void v(CharSequence delimiter, List<T> lists) {
+        println(Log.VERBOSE, toListString(lists, delimiter), null);
+    }
+
+    public void v(Object object) {
+        println(Log.VERBOSE, object.toString(), null);
     }
 
     protected void println(int priority, String message, Throwable t) {

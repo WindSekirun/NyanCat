@@ -40,4 +40,8 @@ internal class OnlyDebugLogger(val debug: Boolean = false, private val tag: Stri
         addList.clear()
         addList.trimToSize()
     }
+
+    override fun getAddedPrinters(): ArrayList<CatLoggerPrinter> {
+        return addList
+    }
 }

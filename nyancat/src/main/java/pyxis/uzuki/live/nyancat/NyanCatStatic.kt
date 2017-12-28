@@ -48,7 +48,7 @@ object NyanCatStatic {
     fun tag(tag: String): NyanCatLogger {
         val newLogger = if (getDebuggable()) OnlyDebugLogger(getDebugState(), tag) else DefaultLogger(tag)
 
-        for (printer in logger.printers) {
+        for (printer in logger.addedPrinters) {
             newLogger.addPrinter(printer)
         }
 

@@ -48,19 +48,13 @@ put this code in your Application's onCreate() methods.
 
 ### Logging
 
-```Java
-NyanCat.d("message")
-NyanCat.i("message %s", "Nya!")
-NyanCat.w(exception, "catched exception")
-NyanCat.e("message")
-NyanCat.v("message")
-```
+#### 
 
 All 5 methods indicate priority of Log.
 
 ### Tags
 
-In Default, NyanCat will find running class's name automatically.
+Automatically finds the name of the class that is running by default.
 
 if you have to declare your own tag, put ```.tag("TAG")``` in Log methods.
 
@@ -77,6 +71,7 @@ Each printer implement ```println(priority: Int, tag: String, message: String, t
 #### Printer Example
 
 1. Declare your own Printer
+
 When you make Custom Printer, Printer need to implement ```CatLoggerPrinter```.
 Each field is NotNull exclude Throwable object. So you need check null-state of Throwable object.
 
@@ -98,6 +93,7 @@ private CatLoggerPrinter textPrinter = new CatLoggerPrinter() {
 ```
 
 2. Add Printer into NyanCat
+
 You can attach Printer in two way.
 
 **Attach in your application**
