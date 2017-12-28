@@ -44,7 +44,7 @@ NyanCatGlobal.breed(config);
 ```
 
 ### Logging
-Please see [NyanCat Wiki]() 
+Please see [NyanCat Wiki](https://github.com/WindSekirun/NyanCat/wiki) 
 
 ## License 
 ```
