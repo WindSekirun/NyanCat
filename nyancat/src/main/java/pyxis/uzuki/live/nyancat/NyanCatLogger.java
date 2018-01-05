@@ -4,10 +4,13 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
+
 import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toListString;
+import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toMapString;
 
 /**
  * NyanCat
@@ -53,6 +56,14 @@ public abstract class NyanCatLogger {
         println(Log.DEBUG, object.toString(), null);
     }
 
+    public <K, V> void d(CharSequence delimiter, Map<K, V> map) {
+        println(Log.DEBUG, toMapString(map, delimiter), null);
+    }
+
+    public <K, V> void d(Map<K, V> map) {
+        println(Log.DEBUG, toMapString(map), null);
+    }
+
     public void i(String message) {
         println(Log.INFO, message, null);
     }
@@ -75,6 +86,14 @@ public abstract class NyanCatLogger {
 
     public void i(Object object) {
         println(Log.INFO, object.toString(), null);
+    }
+
+    public <K, V> void i(CharSequence delimiter, Map<K, V> map) {
+        println(Log.INFO, toMapString(map, delimiter), null);
+    }
+
+    public <K, V> void i(Map<K, V> map) {
+        println(Log.INFO, toMapString(map), null);
     }
 
     public void w(String message) {
@@ -108,6 +127,14 @@ public abstract class NyanCatLogger {
         println(Log.WARN, object.toString(), null);
     }
 
+    public <K, V> void w(CharSequence delimiter, Map<K, V> map) {
+        println(Log.WARN, toMapString(map, delimiter), null);
+    }
+
+    public <K, V> void w(Map<K, V> map) {
+        println(Log.WARN, toMapString(map), null);
+    }
+
     public void e(Throwable t) {
         if (t == null) {
             t = EmptyStateKt.getDefaultException();
@@ -139,6 +166,14 @@ public abstract class NyanCatLogger {
         println(Log.ERROR, object.toString(), null);
     }
 
+    public <K, V> void e(CharSequence delimiter, Map<K, V> map) {
+        println(Log.ERROR, toMapString(map, delimiter), null);
+    }
+
+    public <K, V> void e(Map<K, V> map) {
+        println(Log.ERROR, toMapString(map), null);
+    }
+
     public void v(String message) {
         println(Log.VERBOSE, message, null);
     }
@@ -161,6 +196,14 @@ public abstract class NyanCatLogger {
 
     public void v(Object object) {
         println(Log.VERBOSE, object.toString(), null);
+    }
+
+    public <K, V> void v(CharSequence delimiter, Map<K, V> map) {
+        println(Log.VERBOSE, toMapString(map, delimiter), null);
+    }
+
+    public <K, V> void v(Map<K, V> map) {
+        println(Log.VERBOSE, toMapString(map), null);
     }
 
     protected void println(int priority, String message, Throwable t) {

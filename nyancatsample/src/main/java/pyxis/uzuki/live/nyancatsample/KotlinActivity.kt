@@ -51,8 +51,11 @@ class KotlinActivity : AppCompatActivity() {
 
         txtLogText.text = "==========="
 
-        val arrays = arrayListOf("A", "B", "C")
-        NyanCat.d(arrays)
-        NyanCat.d(1)
+//        val arrays = arrayListOf("A", "B", "C")
+//        NyanCat.d(arrays)
+//        NyanCat.d(1)
+
+        val maps = mapOf("a" to "b", "w" to "r")
+        NyanCat.d(maps)
     }
 }
