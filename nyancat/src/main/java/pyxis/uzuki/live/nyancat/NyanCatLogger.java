@@ -1,5 +1,7 @@
 package pyxis.uzuki.live.nyancat;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.Map;
 import pyxis.uzuki.live.nyancat.printer.CatLoggerPrinter;
 import pyxis.uzuki.live.nyancat.utils.EmptyStateKt;
 
+import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toBundleString;
+import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toIntentString;
 import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toListString;
 import static pyxis.uzuki.live.nyancat.utils.ListCollectionKt.toMapString;
 
@@ -64,6 +68,22 @@ public abstract class NyanCatLogger {
         println(Log.DEBUG, toMapString(map), null);
     }
 
+    public void d(CharSequence delimiter, Bundle bundle) {
+        println(Log.DEBUG, toBundleString(bundle, delimiter), null);
+    }
+
+    public void d(Bundle bundle) {
+        println(Log.DEBUG, toBundleString(bundle), null);
+    }
+
+    public void d(CharSequence delimiter, Intent intent) {
+        println(Log.DEBUG, toIntentString(intent, delimiter), null);
+    }
+
+    public void d(Intent intent) {
+        println(Log.DEBUG, toIntentString(intent), null);
+    }
+
     public void i(String message) {
         println(Log.INFO, message, null);
     }
@@ -94,6 +114,22 @@ public abstract class NyanCatLogger {
 
     public <K, V> void i(Map<K, V> map) {
         println(Log.INFO, toMapString(map), null);
+    }
+
+    public void i(CharSequence delimiter, Bundle bundle) {
+        println(Log.INFO, toBundleString(bundle, delimiter), null);
+    }
+
+    public void i(Bundle bundle) {
+        println(Log.INFO, toBundleString(bundle), null);
+    }
+
+    public void i(CharSequence delimiter, Intent intent) {
+        println(Log.INFO, toIntentString(intent, delimiter), null);
+    }
+
+    public void i(Intent intent) {
+        println(Log.INFO, toIntentString(intent), null);
     }
 
     public void w(String message) {
@@ -135,6 +171,22 @@ public abstract class NyanCatLogger {
         println(Log.WARN, toMapString(map), null);
     }
 
+    public void w(CharSequence delimiter, Bundle bundle) {
+        println(Log.WARN, toBundleString(bundle, delimiter), null);
+    }
+
+    public void w(Bundle bundle) {
+        println(Log.WARN, toBundleString(bundle), null);
+    }
+
+    public void w(CharSequence delimiter, Intent intent) {
+        println(Log.WARN, toIntentString(intent, delimiter), null);
+    }
+
+    public void w(Intent intent) {
+        println(Log.WARN, toIntentString(intent), null);
+    }
+
     public void e(Throwable t) {
         if (t == null) {
             t = EmptyStateKt.getDefaultException();
@@ -174,6 +226,22 @@ public abstract class NyanCatLogger {
         println(Log.ERROR, toMapString(map), null);
     }
 
+    public void e(CharSequence delimiter, Bundle bundle) {
+        println(Log.ERROR, toBundleString(bundle, delimiter), null);
+    }
+
+    public void e(Bundle bundle) {
+        println(Log.ERROR, toBundleString(bundle), null);
+    }
+
+    public void e(CharSequence delimiter, Intent intent) {
+        println(Log.ERROR, toIntentString(intent, delimiter), null);
+    }
+
+    public void e(Intent intent) {
+        println(Log.ERROR, toIntentString(intent), null);
+    }
+
     public void v(String message) {
         println(Log.VERBOSE, message, null);
     }
@@ -204,6 +272,22 @@ public abstract class NyanCatLogger {
 
     public <K, V> void v(Map<K, V> map) {
         println(Log.VERBOSE, toMapString(map), null);
+    }
+
+    public void v(CharSequence delimiter, Bundle bundle) {
+        println(Log.VERBOSE, toBundleString(bundle, delimiter), null);
+    }
+
+    public void v(Bundle bundle) {
+        println(Log.VERBOSE, toBundleString(bundle), null);
+    }
+
+    public void v(CharSequence delimiter, Intent intent) {
+        println(Log.VERBOSE, toIntentString(intent, delimiter), null);
+    }
+
+    public void v(Intent intent) {
+        println(Log.VERBOSE, toIntentString(intent), null);
     }
 
     protected void println(int priority, String message, Throwable t) {

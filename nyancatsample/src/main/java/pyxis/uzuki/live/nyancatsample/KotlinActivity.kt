@@ -1,5 +1,6 @@
 package pyxis.uzuki.live.nyancatsample
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -55,7 +56,12 @@ class KotlinActivity : AppCompatActivity() {
 //        NyanCat.d(arrays)
 //        NyanCat.d(1)
 
-        val maps = mapOf("a" to "b", "w" to "r")
-        NyanCat.d(maps)
+        val bundle = Bundle()
+        bundle.putString("A", "B")
+
+        val intent = Intent()
+        intent.putExtra("A", "Intent")
+        NyanCat.d(bundle)
+        NyanCat.d(intent)
     }
 }

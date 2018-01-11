@@ -1,5 +1,8 @@
 package pyxis.uzuki.live.nyancat
 
+import android.content.Intent
+import android.os.Bundle
+
 object NyanCat {
 
     @JvmStatic
@@ -43,6 +46,26 @@ object NyanCat {
     }
 
     @JvmStatic
+    fun d(bundle: Bundle) {
+        NyanCatGlobal.logger.d(bundle)
+    }
+
+    @JvmStatic
+    fun d(delimiter: CharSequence, bundle: Bundle) {
+        NyanCatGlobal.logger.d(delimiter, bundle)
+    }
+
+    @JvmStatic
+    fun d(intent: Intent) {
+        NyanCatGlobal.logger.d(intent)
+    }
+
+    @JvmStatic
+    fun d(delimiter: CharSequence, intent: Intent) {
+        NyanCatGlobal.logger.d(delimiter, intent)
+    }
+
+    @JvmStatic
     fun i(message: String) {
         NyanCatGlobal.logger.i(message)
     }
@@ -80,6 +103,26 @@ object NyanCat {
     @JvmStatic
     fun <K, V> i(delimiter: CharSequence, map: Map<K, V>) {
         NyanCatGlobal.logger.i(delimiter, map)
+    }
+
+    @JvmStatic
+    fun i(bundle: Bundle) {
+        NyanCatGlobal.logger.i(bundle)
+    }
+
+    @JvmStatic
+    fun i(delimiter: CharSequence, bundle: Bundle) {
+        NyanCatGlobal.logger.i(delimiter, bundle)
+    }
+
+    @JvmStatic
+    fun i(intent: Intent) {
+        NyanCatGlobal.logger.i(intent)
+    }
+
+    @JvmStatic
+    fun i(delimiter: CharSequence, intent: Intent) {
+        NyanCatGlobal.logger.i(delimiter, intent)
     }
 
     @JvmStatic
@@ -128,6 +171,26 @@ object NyanCat {
     }
 
     @JvmStatic
+    fun w(bundle: Bundle) {
+        NyanCatGlobal.logger.w(bundle)
+    }
+
+    @JvmStatic
+    fun w(delimiter: CharSequence, bundle: Bundle) {
+        NyanCatGlobal.logger.w(delimiter, bundle)
+    }
+
+    @JvmStatic
+    fun w(intent: Intent) {
+        NyanCatGlobal.logger.w(intent)
+    }
+
+    @JvmStatic
+    fun w(delimiter: CharSequence, intent: Intent) {
+        NyanCatGlobal.logger.w(delimiter, intent)
+    }
+
+    @JvmStatic
     fun e(t: Throwable) {
         NyanCatGlobal.logger.e(t)
     }
@@ -173,6 +236,26 @@ object NyanCat {
     }
 
     @JvmStatic
+    fun e(bundle: Bundle) {
+        NyanCatGlobal.logger.e(bundle)
+    }
+
+    @JvmStatic
+    fun e(delimiter: CharSequence, bundle: Bundle) {
+        NyanCatGlobal.logger.e(delimiter, bundle)
+    }
+
+    @JvmStatic
+    fun e(intent: Intent) {
+        NyanCatGlobal.logger.e(intent)
+    }
+
+    @JvmStatic
+    fun e(delimiter: CharSequence, intent: Intent) {
+        NyanCatGlobal.logger.e(delimiter, intent)
+    }
+
+    @JvmStatic
     fun v(message: String) {
         NyanCatGlobal.logger.v(message)
     }
@@ -210,6 +293,26 @@ object NyanCat {
     @JvmStatic
     fun <K, V> v(delimiter: CharSequence, map: Map<K, V>) {
         NyanCatGlobal.logger.v(delimiter, map)
+    }
+
+    @JvmStatic
+    fun v(bundle: Bundle) {
+        NyanCatGlobal.logger.v(bundle)
+    }
+
+    @JvmStatic
+    fun v(delimiter: CharSequence, bundle: Bundle) {
+        NyanCatGlobal.logger.v(delimiter, bundle)
+    }
+
+    @JvmStatic
+    fun v(intent: Intent) {
+        NyanCatGlobal.logger.v(intent)
+    }
+
+    @JvmStatic
+    fun v(delimiter: CharSequence, intent: Intent) {
+        NyanCatGlobal.logger.v(delimiter, intent)
     }
 
     @JvmStatic
