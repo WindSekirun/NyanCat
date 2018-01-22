@@ -32,7 +32,7 @@ allprojects {
 *app/build.gradle*
 ```
 dependencies {
-    implementation 'com.github.WindSekirun:NyanCat:1.0.0'
+    implementation 'com.github.WindSekirun:NyanCat:1.2.0'
 }
 ```
 
