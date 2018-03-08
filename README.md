@@ -44,7 +44,42 @@ NyanCatGlobal.breed(config);
 ```
 
 ### Logging
-Please see [NyanCat Wiki](https://github.com/WindSekirun/NyanCat/wiki) 
+
+Logger can be used by static methods in NyanCat class.
+
+Same with general Log class, it divided five methods {i, v, d, w, e} and it indicate each level of log. Each methods contains overloads below.
+
+* NyanCat.d(String): Show message
+  * ```NyanCat.d("Sample Message!");```
+* NyanCat.d(String, Object): Show formatting message
+  * ```NyanCat.d("1 + 2 = %s", 1 + 2);```
+* NyanCat.d(Throwable, String, Object): Show Throwable and message
+  * ```NyanCat.d(exception, "Exception", null);```
+* NyanCat.d(List): Show each elements in list
+  * ```NyanCat.d(list);```
+* NyanCat.d(CharSequence, List): Show each elements in list, can be customize delimiter
+  * ```NyanCat.d(",", list);```
+* NyanCat.d(Object): Show object's toString()
+  * ```NyanCat.d(1);```
+* NyanCat.d(Map): Show each elements in Map
+  * ```NyanCat.d(map);```
+* NyanCat.d(CharSequence, Map): Show each elements in Map, can be customize delimiter
+  * ```NyanCat.d(",", map);```
+* NyanCat.d(Bundle): Show each elements in Bundle
+  * ```NyanCat.d(bundle);```
+* NyanCat.d(CharSequence, Bundle): Show each elements in Bundle, can be customize delimiter
+  * ```NyanCat.d(",", bundle);```
+* NyanCat.d(Intent): Show each elements in Intent
+  * ```NyanCat.d(intent);```
+* NyanCat.d(CharSequence, Intent): Show each elements in Intent, can be customize delimiter
+  * ```NyanCat.d(",", intent);```
+
+Method w, e contains overloads below.
+
+* NyanCat.w(Throwable): Show Throwable
+  * ```NyanCat.w(exception);```
+
+for more details, please see [NyanCat Wiki](https://github.com/WindSekirun/NyanCat/wiki) 
 
 ## License 
 ```
